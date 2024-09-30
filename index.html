@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo-App-2</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+    <header>
+        <h1>APP DE SORTEO GRUPO 2</h1>
+        <br>
+        <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px"></img>
+    </header>
+
+    <main>
+        <section class="sec-1">
+            <h2>CREAR SORTEO UNDERCODE</h2>
+            <form id="sorteo-form" novalidate>
+                <div class="part-one">
+                    <label for="sorteo-nombre">Nombre del Evento:</label>
+                    <input type="text" id="sorteo-nombre" required>
+                    
+                    <label for="participante-nombre">Añadir participante (Nombre y Apellido):</label>
+                    <input type="text" id="participante-nombre">
+                    <br>
+                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>                 
+                    <br>
+                    
+                </div>
+                
+                <div class="part-two">
+                    <h3>Lista Participantes</h3>
+                    <ul id="lista-participantes"></ul>
+                    
+                    <label for="cantidad-ganadores">Cantidad de ganadores:</label>
+                    <input type="number" id="cantidad-ganadores" min="1" max="10" value="1" required>
+                    <br>
+                    <button type="submit" class="btn-crear-sorteo">Crear Sorteo</button>
+                    <br>
+                </div>
+            </form>
+        </section>
+
+
+        <section class="sec-2">
+            <br>
+            <h2>Resultados</h2>
+            <div id="resultados">
+                <h3>No hay sorteos realizados aún.</h3>
+            </div>
+            <button id="reiniciar-sorteo" class="btn-reiniciar" style="display:none;">Reiniciar Sorteo</button>
+            <br>
+        </section>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 SorteApp. Todos los derechos reservados.</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>

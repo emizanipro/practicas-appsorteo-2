@@ -1,0 +1,515 @@
+/* Estilos generales */
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+/* PANTALLA GRANDE */
+@media (min-width: 1000px) {
+
+
+body {
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://thumbs.dreamstime.com/b/pedestal-colorful-confetti-isolated-grey-background-vector-illustration-round-podium-winner-concept-festive-colorful-118129698.jpg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2; 
+    z-index: -1;
+}
+
+
+
+header {
+    color: #e9e9e9;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #000;
+
+}
+
+header img {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
+form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilos específicos para botones */
+button {
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Botón de agregar participante */
+.btn-agregar {
+    background: #28a745;
+    color: white;
+    padding: 5px 20px;
+}
+
+.btn-agregar:hover {
+    background: #218838;
+}
+
+/* Botón de crear sorteo */
+.btn-crear-sorteo {
+    background: #007BFF;
+    color: white;
+    padding: 5px 20px;
+}
+
+.btn-crear-sorteo:hover {
+    background: #0056b3;
+}
+
+/* Botón de reiniciar sorteo */
+.btn-reiniciar {
+    background: #dc3545;
+    color: white;
+    padding: 5px 20px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.btn-reiniciar:hover {
+    background: #c82333;
+    
+}
+
+/* Lista de participantes */
+#lista-participantes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#lista-participantes li {
+    color: #000;
+    background-color: #fff;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: auto;
+    text-align: center;
+}
+
+/* Estilo del botón eliminar dentro de la lista */
+#lista-participantes button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#lista-participantes button:hover {
+    color: #ff0000;
+}
+
+
+main {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.part-one {
+    background: #28a74657;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+}
+
+.part-one input {
+    width: 40%;
+}
+
+
+.part-two {
+    background-color: #0057b353;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.part-two label {
+    font-size: 1rem;
+    color: #000;
+    font-weight: 600;
+
+}
+
+.part-two input {
+    width: 20%;
+}
+
+.sec-2 {
+    background-color: #fb00004a;
+    width: 96%;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: block;
+    justify-content: center;
+}
+
+#resultados {
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+.sec-2 h3 {
+    font-weight: 100;
+    
+}
+
+.sec-2 ul {
+    background-color: #cfcfcf;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+
+.sec-2 p {
+    font-weight: 100; /* Aumentar el peso de la fuente */
+    margin: 10px 0;
+    text-align: left; /* Centrar texto */
+    display: block; /* Mantener como bloque */
+    color: #333; /* Cambiar el color del texto */
+    font-size: 1.2em; /* Aumentar el tamaño de la fuente */
+    line-height: 1.5; /* Mejorar el espaciado entre líneas */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CELULAR */
+@media (max-width: 500px) {
+    
+    body {
+        position: relative;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+    
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(https://thumbs.dreamstime.com/b/pedestal-colorful-confetti-isolated-grey-background-vector-illustration-round-podium-winner-concept-festive-colorful-118129698.jpg);
+        background-position: center;
+        background-size: cover;
+        opacity: 0.2; 
+        z-index: -1;
+    }
+    
+    header {
+        color: #e9e9e9;
+        padding: 10px 0;
+        text-align: center;
+        background-color: #000;
+        display: block;
+        font-size: 1rem;
+    }
+    
+    header img {
+        width: 70px;
+        height: 50px;
+        position: absolute;
+        top: 2%;
+        left: 0%;
+    }
+    
+    h1, h2, h3 {
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+    
+    form {
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0);
+    }
+    
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    
+    input {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #b4b4b4;
+        border-radius: 10px;
+        text-align: center;
+        border: none;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Estilos específicos para botones */
+    button {
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+    /* Botón de agregar participante */
+    .btn-agregar {
+        background: #28a745;
+        color: white;
+        padding: 5px 20px;
+    }
+    
+    .btn-agregar:hover {
+        background: #218838;
+    }
+    
+    /* Botón de crear sorteo */
+    .btn-crear-sorteo {
+        background: #007BFF;
+        color: white;
+        padding: 5px 20px;
+    }
+    
+    .btn-crear-sorteo:hover {
+        background: #0056b3;
+    }
+    
+    /* Botón de reiniciar sorteo */
+    .btn-reiniciar {
+        background: #dc3545;
+        color: white;
+        padding: 5px 20px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
+    
+    .btn-reiniciar:hover {
+        background: #c82333;
+    }
+    
+    /* Lista de participantes */
+    #lista-participantes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 10px 0;
+        padding: 0;
+        width: 100%;
+        list-style-type: none;
+    }
+    
+    #lista-participantes li {
+        color: #000;
+        background-color: #fff;
+        padding: 10px 15px;
+        margin: 5px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 45%; /* Ajusta los elementos para que se vean de 2 en 2 */
+        box-sizing: border-box; /* Mantiene el padding dentro del ancho */
+        text-align: center;
+    }
+    
+    /* Estilo del botón eliminar dentro de la lista */
+    #lista-participantes button {
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    
+    #lista-participantes button:hover {
+        color: #ff0000;
+    }
+    
+    main {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .part-one {
+        background: #28a74657;
+        padding: 10px;
+        border-radius: 10px;
+        display: block;
+        font-weight: 400;
+        width: 90%; /* Asegura que ocupe el 90% del ancho de la pantalla */
+        margin: 0 auto;
+    }
+    
+    .part-one input {
+        width: 80%;
+    }
+    
+    .part-two {
+        background-color: #0057b353;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 2rem;
+        width: 90%; /* Asegura que ocupe el 90% del ancho de la pantalla */
+        margin: 1rem auto;
+    }
+    
+    .part-two label {
+        font-size: 1rem;
+        color: #000;
+        font-weight: 600;
+    }
+    
+    .part-two input {
+        width: 30%;
+    }
+    
+    .sec-2 {
+        background-color: #fb00004a;
+        width: 88%;
+        margin: -20px auto;
+        border-radius: 10px;
+        display: block;
+        justify-content: center;
+    }
+    
+    #resultados {
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .sec-2 h3 {
+        font-weight: 100;
+    }
+    
+    .sec-2 ul {
+        background-color: #cfcfcf;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        width: 60%;
+        background-color: #fff;
+        border-radius: 10px;
+        justify-content: center;
+    }
+    
+    .sec-2 p {
+        font-weight: 100; /* Aumentar el peso de la fuente */
+        margin: 10px 0;
+        text-align: left; /* Centrar texto */
+        display: block; /* Mantener como bloque */
+        color: #333; /* Cambiar el color del texto */
+        font-size: 1.2em; /* Aumentar el tamaño de la fuente */
+        line-height: 1.5; /* Mejorar el espaciado entre líneas */
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+}
+
+
+
+
+
+/* TABLET */
+@media (min-width: 501px) and (max-width: 1000px) {
+
+
+
+}
+
