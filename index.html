@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteo-App-2</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
     
@@ -24,10 +26,23 @@
                     
                     <label for="participante-nombre">Añadir participante (Nombre y Apellido):</label>
                     <input type="text" id="participante-nombre">
+
+                    <label for="documento-participante">Documento:</label>
+                    <input type="number" id="documento-participante" required>
+
+
                     <br>
-                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>                 
-                    <br>
-                    
+                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante Manualmente</button>                 
+                    <br><br>
+
+                    <button type="button" id="abrir-qr" class="btn-abrir-qr">Abrir QR</button>
+                    <div class="overlay-qr" style="display:none;">
+                        <div class="contenido-qr">
+                            <span class="cerrar" id="cerrar-qr">❌</span>
+                            <h3>Escanea el QR para agregar participante</h3>
+                            <div class="qr-code-container"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="part-two">
@@ -37,28 +52,41 @@
                     <label for="cantidad-ganadores">Cantidad de ganadores:</label>
                     <input type="number" id="cantidad-ganadores" min="1" max="10" value="1" required>
                     <br>
+                    <h3>Premios</h3>
+                    <div id="premios-container"></div> <!-- Contenedor para los premios -->
                     <button type="submit" class="btn-crear-sorteo">Crear Sorteo</button>
                     <br>
                 </div>
             </form>
         </section>
 
+        <br>
 
         <section class="sec-2">
             <br>
-            <h2>Resultados</h2>
             <div id="resultados">
                 <h3>No hay sorteos realizados aún.</h3>
             </div>
-            <button id="reiniciar-sorteo" class="btn-reiniciar" style="display:none;">Reiniciar Sorteo</button>
             <br>
         </section>
 
-
+        <!-- Overlay para mostrar resultados -->
+        <div class="overlay-resultados" style="display:none;">
+            <div class="contenido-resultados">
+                <h2>Resultado</h2>
+                <div id="resultados-overlay"></div>
+                <button id="reiniciar-sorteo" class="btn-reiniciar">Reiniciar Sorteo</button>
+            </div>
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2024 SorteApp. Todos los derechos reservados.</p>
     </footer>
+
     <script src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
 </body>
 </html>
