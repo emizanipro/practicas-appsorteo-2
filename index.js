@@ -70,21 +70,26 @@ function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) 
     }
 
     //Manejo del nombre del Evento 
+    // Manejo del formulario para crear el sorteo
     formulario.addEventListener('submit', (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Evita que el formulario se envíe por defecto
+
         const nombreSorteo = document.getElementById('sorteo-nombre').value.trim();
         const cantidadGanadores = parseInt(cantidadGanadoresInput.value);
 
+        // Validar que haya suficientes participantes para realizar el sorteo
         if (participantes.length === 0) {
             alert('No hay participantes para realizar el sorteo.');
             return;
         }
 
+        // Validar que la cantidad de ganadores sea válida
         if (cantidadGanadores > participantes.length) {
             alert('Hay menos participantes que premios. No se puede realizar el sorteo.');
             return;
         }
 
+        // Seleccionar ganadores y mostrar resultados
         const ganadores = seleccionarGanadores(participantes, cantidadGanadores);
         mostrarResultados(nombreSorteo, ganadores);
     });
