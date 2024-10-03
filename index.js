@@ -70,6 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         li.appendChild(botonEliminar);
         listaParticipantes.appendChild(li);
     }
+
+
+    // Escuchar cambios en localStorage
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'participantes') {
+            cargarParticipantes(); // Recargar lista al detectar cambios
+        }
+    });
+
+    // Cargar participantes al inicio
+    cargarParticipantes();
     
 
 
