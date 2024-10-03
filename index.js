@@ -40,8 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-//agregar participante a la lista
-function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
+    // Función para verificar nuevos participantes y actualizar la lista
+    function verificarNuevosParticipantes() {
+        const nuevosParticipantes = JSON.parse(localStorage.getItem('participantes')) || [];
+
+        if (nuevosParticipantes.length > participantes.length) {
+            const nuevos = nuevosParticipantes.filter(np => !participantes.some(p => p.documento === np.documento));
+            nuevos.forEach(np => {
+                agregarParticipanteALaLista(np.nombre, np.documento);
+            });
+            participantes = nuevosParticipantes; // Actualizar la lista de participantes
+        }
+    }
+
+    // Verificar nuevos participantes cada cierto tiempo
+    setInterval(verificarNuevosParticipantes, 3000); // Puedes ajustar el intervalo según tus necesidades
+
+
+
+    //agregar participante a la lista
+    function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
     const li = document.createElement('li');
     li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
 
@@ -69,7 +87,6 @@ function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) 
         listaParticipantes.removeChild(elementoLi);
     }
 
-    //Manejo del nombre del Evento 
     // Manejo del formulario para crear el sorteo
     formulario.addEventListener('submit', (event) => {
         event.preventDefault(); // Evita que el formulario se envíe por defecto
