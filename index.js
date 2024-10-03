@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Escuchar el mensaje del formulario
     window.addEventListener('message', (event) => {
-        if (event.origin !== 'https://emizanipro.github.io') return; // Validar el origen
         const participante = event.data;
         if (participante) {
             const existe = participantes.some(p => p.documento === participante.documento);
