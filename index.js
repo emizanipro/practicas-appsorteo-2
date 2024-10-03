@@ -151,3 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
         overlayQr.style.display = 'none';
     });
 });
+
+
+
+
+
+document.getElementById('abrir-qr').addEventListener('click', () => {
+    const urlAgregarParticipante = 'https://emizanipro.github.io/practicas-appsorteo-2/formulario.html';
+    window.open(urlAgregarParticipante, '_blank');
+});
