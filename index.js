@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('sorteo-form');
-    const listaParticipantes = document.getElementById('lista-participantes');
     const cantidadGanadoresInput = document.getElementById('cantidad-ganadores');
     const premiosContainer = document.getElementById('premios-container');
     const abrirQrBtn = document.getElementById('abrir-qr');
@@ -8,12 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrarQrBtn = document.getElementById('cerrar-qr');
     const overlayResultados = document.querySelector('.overlay-resultados');
     const reiniciarSorteoBtn = document.getElementById('reiniciar-sorteo');
+    const listaParticipantes = document.getElementById('lista-participantes');
 
     let participantes = [];
 
     // Escuchar el mensaje del formulario
     window.addEventListener('message', (event) => {
         const participante = event.data;
+    
         if (participante) {
             const existe = participantes.some(p => p.documento === participante.documento);
             if (!existe) {
@@ -42,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         participantes.push({ nombre: nombreParticipante, documento: documentoParticipante });
     }
     
-
     function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
         participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
         listaParticipantes.removeChild(elementoLi);

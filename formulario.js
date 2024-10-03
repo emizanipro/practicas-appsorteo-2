@@ -4,11 +4,15 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
 
     if (nombre && documento) {
         const participante = { nombre, documento };
-        window.opener.postMessage(participante, '*'); // Enviar el participante al parent
-        alert('Registro exitoso.');
-        window.close(); // Cerrar el formulario
+
+        if (window.opener) {
+            window.opener.postMessage(participante, '*');
+            alert('Registro exitoso.');
+            window.close();
+        } else {
+            alert('Error: El formulario no se abrió correctamente.');
+        }
     } else {
         alert('Por favor, completa todos los campos.');
     }
 });
-
