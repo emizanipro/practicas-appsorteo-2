@@ -17,21 +17,6 @@
     <br>
     <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>
 
-    <script>
-        document.getElementById('agregar-participante').addEventListener('click', () => {
-            const nombre = document.getElementById('participante-nombre').value.trim();
-            const documento = document.getElementById('documento-participante').value.trim();
-
-            if (nombre && documento) {
-                const participante = { nombre, documento };
-
-                // Enviar el participante a la página principal
-                window.opener.postMessage(participante, '*');
-                window.close(); // Cerrar la ventana actual
-            } else {
-                alert('Por favor, completa todos los campos.');
-            }
-        });
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -6,14 +6,12 @@
     <title>Sorteo-App-2</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
 </head>
 <body>
-    
     <header>
         <h1>APP DE SORTEO GRUPO 2</h1>
         <br>
-        <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px"></img>
+        <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px">
     </header>
 
     <main>
@@ -24,17 +22,6 @@
                     <label for="sorteo-nombre">Nombre del Evento:</label>
                     <input type="text" id="sorteo-nombre" required>
                     
-                    <label for="participante-nombre">Añadir participante (Nombre y Apellido):</label>
-                    <input type="text" id="participante-nombre">
-
-                    <label for="documento-participante">Documento:</label>
-                    <input type="number" id="documento-participante" required>
-
-
-                    <br>
-                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>                 
-                    <br><br>
-
                     <button type="button" id="abrir-qr" class="btn-abrir-qr">Abrir QR</button>
                     <div class="overlay-qr" style="display:none;">
                         <div class="contenido-qr">
@@ -60,17 +47,12 @@
             </form>
         </section>
 
-        <br>
-
         <section class="sec-2">
-            <br>
             <div id="resultados">
                 <h3>No hay sorteos realizados aún.</h3>
             </div>
-            <br>
         </section>
 
-        <!-- Overlay para mostrar resultados -->
         <div class="overlay-resultados" style="display:none;">
             <div class="contenido-resultados">
                 <h2>Resultado</h2>
@@ -84,31 +66,8 @@
         <p>&copy; 2024 SorteApp. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-
-    <script>
-        // Escuchar el mensaje del formulario
-        window.addEventListener('message', (event) => {
-            if (event.origin !== 'https://emizanipro.github.io') return; // Asegúrate de validar el origen
-
-            const participante = event.data;
-            if (participante) {
-                agregarParticipanteALaLista(participante.nombre, participante.documento);
-            }
-        });
-
-        function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
-            const listaParticipantes = document.getElementById('lista-participantes');
-            const li = document.createElement('li');
-            li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
-
-            listaParticipantes.appendChild(li);
-        }
-
-       
-    </script>
-    
+    <script src="index.js"></script>
 </body>
 </html>
