@@ -1,3 +1,5 @@
+
+//Formulario para Lista de Participantes
 document.getElementById('agregar-participante').addEventListener('click', () => {
     const nombre = document.getElementById('participante-nombre').value.trim();
     const documento = document.getElementById('documento-participante').value.trim();
@@ -5,7 +7,7 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
     if (nombre && documento) {
         const participante = { nombre, documento };
 
-        // Guardar en localStorage
+        // Guardar en localStorage (como ejemplo para mostrar)
         const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
         const existe = participantes.some(p => p.documento === documento);
 
@@ -13,8 +15,8 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
             participantes.push(participante);
             localStorage.setItem('participantes', JSON.stringify(participantes));
             alert('Registro exitoso.');
-            // Redirigir a index.html
-            window.location.href = 'https://emizanipro.github.io/practicas-appsorteo-2/index.html';
+            //Cierra la Página una ves que el registro fue exitoso
+            window.close();        
         } else {
             alert('Registro inválido. Ya existe un participante con este documento.');
         }

@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Inscripción Sorteo</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="formulario.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h2>Añadir Participante</h2>
-    <label for="participante-nombre">Nombre y Apellido:</label>
-    <input type="text" id="participante-nombre" required>
+    <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px" style="margin: 0 auto; display: block; border-radius: 10px;"></img>
+    <h2>Pariticipá del Sorte de UNDERCODE</h2>
+    <form>
+        <label for="participante-nombre">Nombre y Apellido:</label>
+        <input type="text" id="participante-nombre" required>
+        <br>
+        <label for="documento-participante">Documento:</label>
+        <input type="number" id="documento-participante" required>
+    
+        <br>
+        <button type="button" id="agregar-participante" class="btn-agregar">Agregate a la Lista</button>    
+    </form>
 
-    <label for="documento-participante">Documento:</label>
-    <input type="number" id="documento-participante" required>
+    <p>Luego los ganadores de los Premios deberan presentar el DNI</p>
+    <h3>Gracias por particiapar del Sorteo</h3>
 
-    <br>
-    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>
 
     <script src="formulario.js"></script>
 </body>

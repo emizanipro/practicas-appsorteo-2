@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const formulario = document.getElementById('sorteo-form');
     const cantidadGanadoresInput = document.getElementById('cantidad-ganadores');
     const premiosContainer = document.getElementById('premios-container');
@@ -28,15 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     // Cargar participantes desde localStorage al iniciar
-function cargarParticipantes() {
-    const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
-    participantes.forEach(participante => {
-        agregarParticipanteALaLista(participante.nombre, participante.documento);
-    });
-}
+    function cargarParticipantes() {
+        const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
+        participantes.forEach(participante => {
+            agregarParticipanteALaLista(participante.nombre, participante.documento);
+        });
+    }
+    cargarParticipantes();
 
-cargarParticipantes();
 
+
+
+//agregar participante a la lista
 function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
     const li = document.createElement('li');
     li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
@@ -52,14 +56,20 @@ function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) 
     listaParticipantes.appendChild(li);
 }
 
-function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
-    let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
-    participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
-    
-    localStorage.setItem('participantes', JSON.stringify(participantes));
-    listaParticipantes.removeChild(elementoLi);
-}
 
+
+
+
+    //borrar participante de la lista
+    function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
+        let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
+        participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
+        
+        localStorage.setItem('participantes', JSON.stringify(participantes));
+        listaParticipantes.removeChild(elementoLi);
+    }
+
+    //Manejo del nombre del Evento 
     formulario.addEventListener('submit', (event) => {
         event.preventDefault();
         const nombreSorteo = document.getElementById('sorteo-nombre').value.trim();
@@ -79,6 +89,10 @@ function borrarParticipante(nombreParticipante, documentoParticipante, elementoL
         mostrarResultados(nombreSorteo, ganadores);
     });
 
+
+
+
+    //Seleccionar los ganadores de la lista
     function seleccionarGanadores(participantes, cantidad) {
         const ganadores = [];
         const indicesSeleccionados = new Set();
@@ -93,6 +107,9 @@ function borrarParticipante(nombreParticipante, documentoParticipante, elementoL
         return ganadores;
     }
 
+
+
+    //Resultados de Ganadores y Premios
     function mostrarResultados(nombreSorteo, ganadores) {
         const resultadosDiv = overlayResultados.querySelector('#resultados-overlay');
         resultadosDiv.innerHTML = `<h3> Evento : "${nombreSorteo}":</h3>`;
@@ -108,6 +125,7 @@ function borrarParticipante(nombreParticipante, documentoParticipante, elementoL
         overlayResultados.style.display = 'flex';
     }
 
+    //Reiniicar el Sorteo
     reiniciarSorteoBtn.addEventListener('click', () => {
         participantes = [];
         listaParticipantes.innerHTML = '';
@@ -119,11 +137,18 @@ function borrarParticipante(nombreParticipante, documentoParticipante, elementoL
         generarInputsPremios(1);
     });
 
+
+
+
+    //Manejo de Cantidad de Ganadores del Sorteo
     cantidadGanadoresInput.addEventListener('input', () => {
         const cantidadGanadores = parseInt(cantidadGanadoresInput.value);
         generarInputsPremios(cantidadGanadores);
     });
 
+
+
+    //Manejo de Premios y Auspiciantes del Sorteo
     function generarInputsPremios(cantidad) {
         premiosContainer.innerHTML = '';
         for (let i = 0; i < cantidad; i++) {
@@ -146,6 +171,10 @@ function borrarParticipante(nombreParticipante, documentoParticipante, elementoL
 
     generarInputsPremios(1);
 
+
+
+
+    //ABRIR QR
     abrirQrBtn.addEventListener('click', () => {
         const qrCodeContainer = overlayQr.querySelector('.qr-code-container');
         qrCodeContainer.innerHTML = '';
