@@ -27,26 +27,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-    function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
-        const li = document.createElement('li');
-        li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
+    // Cargar participantes en la lista al iniciar
+participantes.forEach(participante => {
+    agregarParticipanteALaLista(participante.nombre, participante.documento);
+});
+
+function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
+    const li = document.createElement('li');
+    li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
+
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = '❌';
+    botonEliminar.style.marginLeft = '10px';
+    botonEliminar.addEventListener('click', () => {
+        borrarParticipante(nombreParticipante, documentoParticipante, li);
+    });
+
+    li.appendChild(botonEliminar);
+    listaParticipantes.appendChild(li);
+}
+
+function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
+    participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
+    listaParticipantes.removeChild(elementoLi);
     
-        const botonEliminar = document.createElement('button');
-        botonEliminar.textContent = '❌';
-        botonEliminar.style.marginLeft = '10px';
-        botonEliminar.addEventListener('click', () => {
-            borrarParticipante(nombreParticipante, documentoParticipante, li);
-        });
-    
-        li.appendChild(botonEliminar);
-        listaParticipantes.appendChild(li);
-        participantes.push({ nombre: nombreParticipante, documento: documentoParticipante });
-    }
-    
-    function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
-        participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
-        listaParticipantes.removeChild(elementoLi);
-    }
+    // Actualizar localStorage
+    localStorage.setItem('participantes', JSON.stringify(participantes));
+}
 
     formulario.addEventListener('submit', (event) => {
         event.preventDefault();

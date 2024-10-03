@@ -5,14 +5,21 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
     if (nombre && documento) {
         const participante = { nombre, documento };
 
-        if (window.opener) {
-            window.opener.postMessage(participante, '*');
+        // Guardar en localStorage
+        const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
+        const existe = participantes.some(p => p.documento === documento);
+
+        if (!existe) {
+            participantes.push(participante);
+            localStorage.setItem('participantes', JSON.stringify(participantes));
             alert('Registro exitoso.');
-            window.close();
+            window.location.href = 'https://emizanipro.github.io/practicas-appsorteo-2/index.html'; // Redirigir a index.html
         } else {
-            alert('Error: El formulario no se abrió correctamente.');
+            alert('Registro inválido. Ya existe un participante con este documento.');
         }
     } else {
         alert('Por favor, completa todos los campos.');
     }
 });
+
+
