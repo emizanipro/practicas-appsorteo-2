@@ -16,7 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.origin !== 'https://emizanipro.github.io') return;
         const participante = event.data;
         if (participante) {
-            agregarParticipanteALaLista(participante.nombre, participante.documento);
+            const existe = participantes.some(p => p.documento === participante.documento);
+            if (!existe) {
+                agregarParticipanteALaLista(participante.nombre, participante.documento);
+                alert('Registro exitoso.');
+            } else {
+                alert('Registro inválido. Ya existe un participante con este documento.');
+            }
         }
     });
 

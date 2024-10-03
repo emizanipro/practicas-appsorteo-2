@@ -10,3 +10,4 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
         alert('Por favor, completa todos los campos.');
     }
 });
+
