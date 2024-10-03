@@ -13,7 +13,8 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
             participantes.push(participante);
             localStorage.setItem('participantes', JSON.stringify(participantes));
             alert('Registro exitoso.');
-            window.location.href = 'https://emizanipro.github.io/practicas-appsorteo-2/index.html'; // Redirigir a index.html
+            // Redirigir a index.html
+            window.location.href = 'https://emizanipro.github.io/practicas-appsorteo-2/index.html';
         } else {
             alert('Registro inválido. Ya existe un participante con este documento.');
         }
@@ -21,5 +22,3 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
         alert('Por favor, completa todos los campos.');
     }
 });
-
-

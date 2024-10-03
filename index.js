@@ -27,10 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-    // Cargar participantes en la lista al iniciar
-participantes.forEach(participante => {
-    agregarParticipanteALaLista(participante.nombre, participante.documento);
-});
+    // Cargar participantes desde localStorage al iniciar
+function cargarParticipantes() {
+    const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
+    participantes.forEach(participante => {
+        agregarParticipanteALaLista(participante.nombre, participante.documento);
+    });
+}
+
+cargarParticipantes();
 
 function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
     const li = document.createElement('li');
@@ -48,11 +53,11 @@ function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) 
 }
 
 function borrarParticipante(nombreParticipante, documentoParticipante, elementoLi) {
+    let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
     participantes = participantes.filter(participante => !(participante.nombre === nombreParticipante && participante.documento === documentoParticipante));
-    listaParticipantes.removeChild(elementoLi);
     
-    // Actualizar localStorage
     localStorage.setItem('participantes', JSON.stringify(participantes));
+    listaParticipantes.removeChild(elementoLi);
 }
 
     formulario.addEventListener('submit', (event) => {
