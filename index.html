@@ -32,7 +32,7 @@
 
 
                     <br>
-                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante Manualmente</button>                 
+                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>                 
                     <br><br>
 
                     <button type="button" id="abrir-qr" class="btn-abrir-qr">Abrir QR</button>
@@ -52,7 +52,7 @@
                     <label for="cantidad-ganadores">Cantidad de ganadores:</label>
                     <input type="number" id="cantidad-ganadores" min="1" max="10" value="1" required>
                     <br>
-                    <h3>Premios</h3>
+                    <h3>Premio y Auspiciante</h3>
                     <div id="premios-container"></div> <!-- Contenedor para los premios -->
                     <button type="submit" class="btn-crear-sorteo">Crear Sorteo</button>
                     <br>
@@ -88,5 +88,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
+    <script>
+        // Escuchar el mensaje del formulario
+        window.addEventListener('message', (event) => {
+            if (event.origin !== 'https://emizanipro.github.io') return; // Asegúrate de validar el origen
+
+            const participante = event.data;
+            if (participante) {
+                agregarParticipanteALaLista(participante.nombre, participante.documento);
+            }
+        });
+
+        function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
+            const listaParticipantes = document.getElementById('lista-participantes');
+            const li = document.createElement('li');
+            li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
+
+            listaParticipantes.appendChild(li);
+        }
+
+       
+    </script>
+    
 </body>
 </html>

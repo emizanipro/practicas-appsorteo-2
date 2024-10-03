@@ -17,30 +17,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formulario.addEventListener('submit', (event) => {
         event.preventDefault();
-
+    
         const nombreSorteo = document.getElementById('sorteo-nombre').value.trim();
         const cantidadGanadores = parseInt(cantidadGanadoresInput.value);
         const premios = Array.from(document.querySelectorAll('.premio-input')).map(input => input.value);
-
+        const auspiciantes = Array.from(document.querySelectorAll('.auspiciante-input')).map(input => input.value); // Obtener los auspiciantes
+    
         // Validaciones
         if (participantes.length === 0) {
             alert('No hay participantes para realizar el sorteo.');
             return;
         }
-
+    
         if (cantidadGanadores > participantes.length) {
             alert('Hay menos participantes que premios. No se puede realizar el sorteo.');
             return;
         }
-
+    
         if (premios.some(premio => !premio)) {
             alert('Todos los premios deben estar llenos.');
             return;
         }
-
+    
+        if (auspiciantes.some(auspiciante => !auspiciante)) {
+            alert('Todos los auspiciantes deben estar llenos.');
+            return;
+        }
+    
         const ganadores = seleccionarGanadores(participantes, cantidadGanadores);
-        mostrarResultados(nombreSorteo, ganadores, premios);
+        mostrarResultados(nombreSorteo, ganadores, premios, auspiciantes); // Pasar también los auspiciantes
     });
+    
 
     function seleccionarGanadores(participantes, cantidad) {
         const ganadores = [];
@@ -58,23 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    function mostrarResultados(nombreSorteo, ganadores, premios) {
+    function mostrarResultados(nombreSorteo, ganadores, premios, auspiciantes) {
         const resultadosDiv = overlayResultados.querySelector('#resultados-overlay');
         resultadosDiv.innerHTML = `<h3> Evento : "${nombreSorteo}":</h3>`;
         const listaGanadores = document.createElement('ul');
-
+    
         ganadores.forEach((ganador, index) => {
             const premio = premios[index] || 'Sin premio';
+            const auspiciante = auspiciantes[index] || 'Sin auspiciante'; // Obtener el auspiciante
             const li = document.createElement('li');
-            li.textContent = `${index + 1}: ${ganador.nombre} (Doc: ${ganador.documento}) - ${premio}`; // Mostrar nombre y documento
+            li.textContent = `${index + 1}: ${ganador.nombre} (Doc: ${ganador.documento}) - ${premio} - ${auspiciante}`; // Mostrar nombre, documento, premio y auspiciante
             listaGanadores.appendChild(li);
         });
-        
-        
-
+    
         resultadosDiv.appendChild(listaGanadores);
         overlayResultados.style.display = 'flex';
     }
+    
 
     reiniciarSorteoBtn.addEventListener('click', () => {
         participantes = [];
@@ -96,38 +103,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generarInputsPremios(cantidad) {
         premiosContainer.innerHTML = ''; // Limpiar inputs anteriores
-
+    
         for (let i = 0; i < cantidad; i++) {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = `Premio N° ${i + 1}`;
-            input.className = 'premio-input';
-            premiosContainer.appendChild(input);
+            const divPremio = document.createElement('div');
+            divPremio.classList.add('contenedor-premio');
+    
+            const inputPremio = document.createElement('input');
+            inputPremio.type = 'text';
+            inputPremio.placeholder = `Premio N° ${i + 1}`;
+            inputPremio.className = 'premio-input';
+            divPremio.appendChild(inputPremio);
+    
+            const inputAuspiciante = document.createElement('input');
+            inputAuspiciante.type = 'text';
+            inputAuspiciante.placeholder = `Auspiciante N° ${i + 1}`;
+            inputAuspiciante.className = 'auspiciante-input';
+            divPremio.appendChild(inputAuspiciante);
+    
+            premiosContainer.appendChild(divPremio);
         }
     }
+    
 
     generarInputsPremios(1);
 
     // === QR ===
 
-    abrirQrBtn.addEventListener('click', () => {
-        const qrCodeContainer = overlayQr.querySelector('.qr-code-container');
-        qrCodeContainer.innerHTML = ''; // Limpiar contenido
-    
-        // Generar el nuevo QR
-        $(qrCodeContainer).qrcode({
-            text: 'Texto para agregar participante',
-            width: 256,
-            height: 256
-        });
-    
-        overlayQr.style.display = 'block';
+abrirQrBtn.addEventListener('click', () => {
+    const qrCodeContainer = overlayQr.querySelector('.qr-code-container');
+    qrCodeContainer.innerHTML = ''; // Limpiar contenido
+
+    // Generar el nuevo QR con la URL de la página de agregar participante
+    const urlAgregarParticipante = 'https://emizanipro.github.io/practicas-appsorteo-2/formulario.html'; // URL del formulario
+    $(qrCodeContainer).qrcode({
+        text: urlAgregarParticipante,
+        width: 256,
+        height: 256
     });
 
-    // Cerrar overlay del QR
-    cerrarQrBtn.addEventListener('click', () => {
-        overlayQr.style.display = 'none'; // Ocultar el overlay
-    });
+    overlayQr.style.display = 'block'; // Mostrar el overlay
+});
+
+// Cerrar overlay del QR
+cerrarQrBtn.addEventListener('click', () => {
+    overlayQr.style.display = 'none'; // Ocultar el overlay
+});
+
+
+
+
+    
+
+
+
+
+
+
+
 
     // === Lista Participantes ===
 

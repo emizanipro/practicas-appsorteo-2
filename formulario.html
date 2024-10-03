@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Inscripción Sorteo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Añadir Participante</h2>
+    <label for="participante-nombre">Nombre y Apellido:</label>
+    <input type="text" id="participante-nombre" required>
+
+    <label for="documento-participante">Documento:</label>
+    <input type="number" id="documento-participante" required>
+
+    <br>
+    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante</button>
+
+    <script>
+        document.getElementById('agregar-participante').addEventListener('click', () => {
+            const nombre = document.getElementById('participante-nombre').value.trim();
+            const documento = document.getElementById('documento-participante').value.trim();
+
+            if (nombre && documento) {
+                const participante = { nombre, documento };
+
+                // Enviar el participante a la página principal
+                window.opener.postMessage(participante, '*');
+                window.close(); // Cerrar la ventana actual
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        });
+    </script>
+</body>
+</html>
