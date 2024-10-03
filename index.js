@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //agregar participante a la lista
+    // Función para agregar participante a la lista en el DOM
     function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
         const li = document.createElement('li');
         li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
@@ -71,16 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         listaParticipantes.appendChild(li);
     }
 
-
-    // Escuchar cambios en localStorage
+    // Escuchar cambios en localStorage para actualizar la lista de participantes
     window.addEventListener('storage', (event) => {
         if (event.key === 'participantes') {
-            cargarParticipantes(); // Recargar lista al detectar cambios
+            cargarParticipantes();
         }
     });
 
-    // Cargar participantes al inicio
+    // Cargar participantes al iniciar la página
     cargarParticipantes();
+
     
 
 

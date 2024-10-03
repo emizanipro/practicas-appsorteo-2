@@ -28,6 +28,7 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
 });
 
 
+
 // Función para notificar al administrador de nuevos participantes (puedes ajustar la lógica según tu aplicación)
 function notificarAdministradorNuevoParticipante() {
     // Aquí puedes agregar la lógica para notificar al administrador, por ejemplo:
