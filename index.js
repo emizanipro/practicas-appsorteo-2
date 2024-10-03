@@ -13,19 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let participantes = [];
 
     // Escuchar el mensaje del formulario
-    window.addEventListener('message', (event) => {
-        const participante = event.data;
-    
-        if (participante) {
-            const existe = participantes.some(p => p.documento === participante.documento);
-            if (!existe) {
-                agregarParticipanteALaLista(participante.nombre, participante.documento);
-                alert('Registro exitoso.');
-            } else {
-                alert('Registro inválido. Ya existe un participante con este documento.');
-            }
-        }
-    });
+    // Escuchar el mensaje del formulario
+window.addEventListener('message', (event) => {
+    const participante = event.data;
+
+    if (participante) {
+        agregarParticipanteALaLista(participante.nombre, participante.documento);
+        alert('Registro exitoso.');
+    }
+});
+
     
 
     // Cargar participantes desde localStorage al iniciar
@@ -60,19 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //agregar participante a la lista
     function agregarParticipanteALaLista(nombreParticipante, documentoParticipante) {
-    const li = document.createElement('li');
-    li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
-
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = '❌';
-    botonEliminar.style.marginLeft = '10px';
-    botonEliminar.addEventListener('click', () => {
-        borrarParticipante(nombreParticipante, documentoParticipante, li);
-    });
-
-    li.appendChild(botonEliminar);
-    listaParticipantes.appendChild(li);
-}
+        const li = document.createElement('li');
+        li.textContent = `${nombreParticipante} (Doc: ${documentoParticipante})`;
+    
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = '❌';
+        botonEliminar.style.marginLeft = '10px';
+        botonEliminar.addEventListener('click', () => {
+            borrarParticipante(nombreParticipante, documentoParticipante, li);
+        });
+    
+        li.appendChild(botonEliminar);
+        listaParticipantes.appendChild(li);
+    }
+    
 
 
 
