@@ -16,9 +16,6 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
             localStorage.setItem('participantes', JSON.stringify(participantes));
             alert('Registro exitoso.');
 
-            // Notificar al administrador (opcional, puedes implementarlo)
-            notificarAdministradorNuevoParticipante();
-
             // Limpiar campos después del registro
             document.getElementById('participante-nombre').value = '';
             document.getElementById('documento-participante').value = '';
@@ -29,6 +26,7 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
         alert('Por favor, completa todos los campos.');
     }
 });
+
 
 // Función para notificar al administrador de nuevos participantes (puedes ajustar la lógica según tu aplicación)
 function notificarAdministradorNuevoParticipante() {

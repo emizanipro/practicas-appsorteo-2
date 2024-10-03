@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Escuchar el mensaje del formulario
     // Escuchar el mensaje del formulario
-window.addEventListener('message', (event) => {
+    window.addEventListener('message', (event) => {
     const participante = event.data;
 
     if (participante) {
@@ -28,11 +28,11 @@ window.addEventListener('message', (event) => {
     // Cargar participantes desde localStorage al iniciar
     function cargarParticipantes() {
         const participantes = JSON.parse(localStorage.getItem('participantes')) || [];
+        listaParticipantes.innerHTML = ''; // Limpiar lista antes de cargar
         participantes.forEach(participante => {
             agregarParticipanteALaLista(participante.nombre, participante.documento);
         });
     }
-    cargarParticipantes();
 
 
 
