@@ -5,16 +5,10 @@ document.getElementById('agregar-participante').addEventListener('click', () => 
     if (nombre && documento) {
         const participante = { nombre, documento };
         window.opener.postMessage(participante, '*'); // Enviar el participante al parent
-        alert('Registro exitoso.'); // Muestra el mensaje de éxito antes de cerrar
+        alert('Registro exitoso.');
         window.close(); // Cerrar el formulario
     } else {
         alert('Por favor, completa todos los campos.');
     }
 });
 
-
-
-document.getElementById('abrir-qr').addEventListener('click', () => {
-    const urlAgregarParticipante = 'https://emizanipro.github.io/practicas-appsorteo-2/formulario.html';
-    window.open(urlAgregarParticipante, '_blank');
-});

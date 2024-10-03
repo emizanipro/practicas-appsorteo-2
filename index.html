@@ -6,12 +6,14 @@
     <title>Sorteo-App-2</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
+    
     <header>
         <h1>APP DE SORTEO GRUPO 2</h1>
         <br>
-        <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px">
+        <img src="https://th.bing.com/th/id/OIP.Kyo_QoAnvd9awv3LVhkSzQHaE8?pid=ImgDet&w=474&h=316&rs=1" width="200p" height="97px"></img>
     </header>
 
     <main>
@@ -22,6 +24,17 @@
                     <label for="sorteo-nombre">Nombre del Evento:</label>
                     <input type="text" id="sorteo-nombre" required>
                     
+                    <label for="participante-nombre">Añadir participante (Nombre y Apellido):</label>
+                    <input type="text" id="participante-nombre">
+
+                    <label for="documento-participante">Documento:</label>
+                    <input type="number" id="documento-participante" required>
+
+
+                    <br>
+                    <button type="button" id="agregar-participante" class="btn-agregar">Agregar Participante Manualmente</button>                 
+                    <br><br>
+
                     <button type="button" id="abrir-qr" class="btn-abrir-qr">Abrir QR</button>
                     <div class="overlay-qr" style="display:none;">
                         <div class="contenido-qr">
@@ -39,20 +52,25 @@
                     <label for="cantidad-ganadores">Cantidad de ganadores:</label>
                     <input type="number" id="cantidad-ganadores" min="1" max="10" value="1" required>
                     <br>
-                    <h3>Premio y Auspiciante</h3>
-                    <div id="premios-container"></div>
+                    <h3>Premios</h3>
+                    <div id="premios-container"></div> <!-- Contenedor para los premios -->
                     <button type="submit" class="btn-crear-sorteo">Crear Sorteo</button>
                     <br>
                 </div>
             </form>
         </section>
 
+        <br>
+
         <section class="sec-2">
+            <br>
             <div id="resultados">
                 <h3>No hay sorteos realizados aún.</h3>
             </div>
+            <br>
         </section>
 
+        <!-- Overlay para mostrar resultados -->
         <div class="overlay-resultados" style="display:none;">
             <div class="contenido-resultados">
                 <h2>Resultado</h2>
@@ -66,8 +84,11 @@
         <p>&copy; 2024 SorteApp. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script src="index.js"></script>
+
+    
+    
 </body>
 </html>
